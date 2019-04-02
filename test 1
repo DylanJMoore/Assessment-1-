@@ -1,7 +1,12 @@
 #include <stdio.h>
 
+
+
 int main()
 {
-  printf("hello world");
-  return 0;
+    char wrd[3], wrd1[3], wrd2[2];
+    scanf("%s %s %s",wrd,wrd1,wrd2);
+    printf("%s %s %s",wrd,wrd1,wrd2);
+
+    return 0;
 }
