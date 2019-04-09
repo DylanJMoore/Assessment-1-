@@ -15,7 +15,8 @@ int main()
     EncryptedText=fopen("EncryptedText.txt","w");
     printf("Enter a value to rotate the letters by:\n");
     scanf("%d",&key);    
-    
+    if(key!=0)
+    {
     while(!feof(TextToEncrypt))                         // makes a loop so that while the file is still going
     {
         fscanf(TextToEncrypt,"%s",wrd);                 //reads a word in the file then stores it in a string
@@ -27,6 +28,8 @@ int main()
     fprintf(EncryptedText, "\n");                       //prints new line to file
     fclose(TextToEncrypt);                              //closes file
     fclose(EncryptedText);                              //closes file
+    }
+
   return 0;
 }
 
