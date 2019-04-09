@@ -1,15 +1,27 @@
 #include <stdio.h>
 #include <string.h>
 
-#define STR_LTH 25
+#define STR_LTH 25                                  //makes the length 25
 
-char encrypt(char *wrd);
+char encrypt(char *wrd);                            //function for encrypting 
 
 int main()
 {
-  char wrd[STR_LTH]={'h','e','l','l','o','\0'};                   
-  encrypt(wrd);
-  printf("%s",wrd);                             
+    char wrd[STR_LTH];
+    FILE *TextToEncrypt;
+    TextToEncrypt=fopen("TextToEncrypt.txt","r");
+//    File *EncryptedText;
+//    Encryptedtext=fopen("EncryptedText.txt","w");
+    while(!feof(TextToEncrypt))
+    {
+        fscanf(TextToEncrypt,"%s",wrd);
+        //char wrd[STR_LTH]={'h','e','l','l','o','\0'};   //stores string in wrd
+    
+        encrypt(wrd);                                     //calls function
+        printf("%s ",wrd); 
+    }
+    printf("\n");
+
   return 0;
 }
 
@@ -23,7 +35,7 @@ char encrypt(char *wrd)
         {
             return 0;
         }
-        wrd[i]=wrd[i]+2;
+        wrd[i]=wrd[i]+3;                              //shifts char value up 2
     }
     return 0;
 }
