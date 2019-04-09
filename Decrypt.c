@@ -3,13 +3,13 @@
 
 #define STR_LTH 26                                      //makes the length 25
 
-char decrypt(char *wrd, int key);                       //function for encrypting 
+char decrypt(char *wrd, int key);                       //function for decrypting 
 
 int main()
 {
     char wrd[STR_LTH];                                  //declares string
     int key=0;
-    FILE *EncryptedText;                                //sets a pointer to the file TextToEncrypt
+    FILE *EncryptedText;                                //sets a pointer to the file EncryptedText
     EncryptedText=fopen("EncryptedText.txt","r");       //opens and reads the file
     FILE *DecryptedText;
     DecryptedText=fopen("DecryptedText.txt","w");
@@ -21,8 +21,8 @@ int main()
     {
         fscanf(EncryptedText,"%s",wrd);                 //reads a word in the file then stores it in a string
         decrypt(wrd, key);                             //calls function to that string       
-        printf("%s ",wrd);                              //prints the encrypted text to the console
-        fprintf(DecryptedText, "%s ",wrd);              //prints encrypted text to the file EncryptedText
+        printf("%s ",wrd);                              //prints the decrypted text to the console
+        fprintf(DecryptedText, "%s ",wrd);              //prints decrypted text to the file DecryptedText
     }
     printf("\n");                                       //prints new line to the console
     fprintf(DecryptedText, "\n");                       //prints new line to file
@@ -47,7 +47,7 @@ char decrypt(char *wrd, int key)
         {
             return 0;
         }
-        wrd[i]=wrd[i]-key;                                //shifts char value up by an amount
+        wrd[i]=wrd[i]-key;                                //shifts char value down by an amount specified
     }
     return 0;
 }
