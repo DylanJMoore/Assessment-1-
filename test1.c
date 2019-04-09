@@ -8,12 +8,12 @@ char encrypt(char *wrd, int key);                       //function for encryptin
 int main()
 {
     char wrd[STR_LTH];                                  //declares string
-    int key;
+    int key=0;
     FILE *TextToEncrypt;                                //sets a pointer to the file TextToEncrypt
     TextToEncrypt=fopen("TextToEncrypt.txt","r");       //opens and reads the file
     FILE *EncryptedText;
     EncryptedText=fopen("EncryptedText.txt","w");
-    printf("Enter a value to rotate the letters by:\n");
+    printf("Enter a positive non-zero value to rotate the letters by:\n");
     scanf("%d",&key);    
     if(key!=0)
     {
@@ -28,6 +28,10 @@ int main()
     fprintf(EncryptedText, "\n");                       //prints new line to file
     fclose(TextToEncrypt);                              //closes file
     fclose(EncryptedText);                              //closes file
+    }
+    else
+    {
+        printf("Try again using a non-zero number\n");
     }
 
   return 0;
