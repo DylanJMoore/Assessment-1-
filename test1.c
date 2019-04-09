@@ -10,15 +10,14 @@ int main()
     char wrd[STR_LTH];
     FILE *TextToEncrypt;
     TextToEncrypt=fopen("TextToEncrypt.txt","r");
-//    File *EncryptedText;
-//    Encryptedtext=fopen("EncryptedText.txt","w");
+    File *EncryptedText;
+    Encryptedtext=fopen("EncryptedText.txt","w");
     while(!feof(TextToEncrypt))
     {
-        fscanf(TextToEncrypt,"%s",wrd);
-        //char wrd[STR_LTH]={'h','e','l','l','o','\0'};   //stores string in wrd
-    
+        fscanf(TextToEncrypt,"%s",wrd);    
         encrypt(wrd);                                     //calls function
-        printf("%s ",wrd); 
+        printf("%s ",wrd);
+        
     }
     printf("\n");
 
