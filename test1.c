@@ -2,13 +2,14 @@
 #include <string.h>
 
 #define STR_LTH 25
+
 char encrypt(char *wrd);
 
 int main()
 {
   char wrd[STR_LTH]={'h','e','l','l','o','\0'};                   
   encrypt(wrd);
-  printf("%s",wrd);                             //prints the words 
+  printf("%s",wrd);                             
   return 0;
 }
 
@@ -22,8 +23,7 @@ char encrypt(char *wrd)
         {
             return 0;
         }
-        wrd[i]=wrd[i]+5;
-        i++;
+        wrd[i]=wrd[i]+2;
     }
     return 0;
 }
