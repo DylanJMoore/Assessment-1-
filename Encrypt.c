@@ -48,6 +48,10 @@ char encrypt(char *wrd, int key)
             return 0;
         }
         wrd[i]=wrd[i]+key;                                //shifts char value up by an amount
+        if(wrd[i]>122)
+        {
+            wrd[i]=wrd[i]-26;
+        }
     }
     return 0;
 }
