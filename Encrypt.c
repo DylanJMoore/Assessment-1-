@@ -43,14 +43,21 @@ char encrypt(char *wrd, int key)
     int i=0;                                            //declares i as an int
     for(i = 0;i < STR_LTH;i++)                          //for thr length of the string 
     {
+        
         if(wrd[i] == '\0')                              //if the word ends return 0
         {
             return 0;
         }
+        
         wrd[i]=wrd[i]+key;                                //shifts char value up by an amount
-        if(wrd[i]>122)
+        
+        if(wrd[i]>90)
         {
             wrd[i]=wrd[i]-26;
+        }
+        else if(wrd[i]<65)
+        {
+            wrd[i]=wrd[i]+25;
         }
     }
     return 0;
