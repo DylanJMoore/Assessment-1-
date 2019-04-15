@@ -21,11 +21,9 @@ int main()
             encrypt(wrd, key);                             //calls function to that string       
             printf("%s ",wrd);                              //prints the encrypted text to the console
             fprintf(EncryptedText, "%s ",wrd);              //prints encrypted text to the file EncryptedText
-            printf("\n");                                       //prints new line to the console
-            fprintf(EncryptedText, "\n");                       //prints new line to file
-            fclose(TextToEncrypt);                              //closes file
-            fclose(EncryptedText);                              //closes file
         }
+        fclose(TextToEncrypt);                              //closes file
+        fclose(EncryptedText);   
     }
     else
     {
