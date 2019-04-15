@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <string.h>
+
+#define STR_LTH 26
+
+char encrypt(char *wrd, int key); 
+
+int main() 
+{
+    int key=0;
+    FILE *TextToEncrypt;                                //sets a pointer to the file TextToEncrypt
+    TextToEncrypt=fopen("TextToEncrypt.txt","r");       //opens and reads the file
+    FILE *EncryptedText;
+    EncryptedText=fopen("EncryptedText.txt","w");
+    char wrd[STR_LTH]; 
+    if(key==0)
+    {
+        while(!feof(TextToEncrypt))                         // makes a loop so that while the file is still going
+        {
+            fscanf(TextToEncrypt,"%s",wrd);                 //reads a word in the file then stores it in a string
+            encrypt(wrd, key);                             //calls function to that string       
+            printf("%s ",wrd);                              //prints the encrypted text to the console
+            fprintf(EncryptedText, "%s ",wrd);              //prints encrypted text to the file EncryptedText
+            printf("\n");                                       //prints new line to the console
+            fprintf(EncryptedText, "\n");                       //prints new line to file
+            fclose(TextToEncrypt);                              //closes file
+            fclose(EncryptedText);                              //closes file
+        }
+    }
+    else
+    {
+        printf("Try again using a non-zero number\n");
+    }
+
+  return 0;
+}	
+
+char encrypt(char *wrd, int key)
+{
+    char A=65;
+    char B=66;
+    char C=67;
+    char D=68;
+    char E=69;
+    char F=70;
+    char G=71;
+    char H=72;
+    char I=73;
+    char J=74;
+    char K=75;
+    char L=76;
+    char M=77;
+    char N=78;
+    char O=79;
+    char P=80;
+    char Q=81;
+    char R=82;
+    char S=83;
+    char T=84;
+    char U=85;
+    char V=86;
+    char W=87;
+    char X=88;
+    char Y=89;
+    char Z=90;
+    
+    int i=0;                                            //declares i as an int
+    
+    for(i = 0;i < STR_LTH;i++)                          //for thr length of the string 
+    {
+       switch(wrd[i])
+       {
+        case 65:    wrd[i]= Q;
+                    break;
+        case 66:    wrd[i]= W;
+                    break;
+        case 67:    wrd[i]= E;
+                    break;
+        case 68:    wrd[i]= R;
+                    break;
+        case 69:    wrd[i]= T;
+                    break;
+        case 70:    wrd[i]= Y;
+                    break;
+        case 71:    wrd[i]= U;
+                    break;
+        case 72:    wrd[i]= I;
+                    break;
+        case 73:    wrd[i]= O;
+                    break;
+        case 74:    wrd[i]= P;
+                    break;
+        case 75:    wrd[i]= A;
+                    break;
+        case 76:    wrd[i]= S;
+                    break;
+        case 77:    wrd[i]= D;
+                    break;
+        case 78:    wrd[i]= F;
+                    break;
+        case 79:    wrd[i]= G;
+                    break;
+        case 80:    wrd[i]= H;
+                    break;
+        case 81:    wrd[i]= J;
+                    break;
+        case 82:    wrd[i]= K;
+                    break;
+        case 83:    wrd[i]= L;
+                    break;
+        case 84:    wrd[i]= Z;
+                    break;
+        case 85:    wrd[i]= X;
+                    break;
+        case 86:    wrd[i]= C;
+                    break;
+        case 87:    wrd[i]= V;
+                    break;
+        case 88:    wrd[i]= B;
+                    break;
+        case 89:    wrd[i]= N;
+                    break;
+        case 90:    wrd[i]= M;
+                    break;
+            
+       default: break;
+        }
+
+    }
+    return 0;
+}
