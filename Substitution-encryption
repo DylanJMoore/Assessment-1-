@@ -3,16 +3,21 @@
 
 #define STR_LTH 26
 
-char encrypt(char *wrd, int key); 
+char encrypt(char *wrd, int key, char *a,*b,*c,*d,*e,*f,*g,*h,*i,*j,*k,*l,*m,*n,*o,*p,*q,*r,*s,*t,*u,*v,*w,*x,*y,*z); 
 
 int main() 
 {
     int key=0;
+    char a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
     FILE *TextToEncrypt;                                //sets a pointer to the file TextToEncrypt
     TextToEncrypt=fopen("TextToEncrypt.txt","r");       //opens and reads the file
     FILE *EncryptedText;
     EncryptedText=fopen("EncryptedText.txt","w");
-    char wrd[STR_LTH]; 
+    char wrd[STR_LTH];
+    
+    printf("Enter a letter for the corresponding letter directly below it\nA B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n| | | | | | | | | | | | | | | | | | | | | | | | | |\nV V V V V V V V V V V V V V V V V V V V V V V V V V\n");
+    scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a,&b,&c,&d,&e,&f,&g,&h,&i,&j,&k,&l,&m,&n,&o,&p,&q,&r,&s,&t,&u,&v,&w,&x,&y,&z);
+    
     if(key==0)
     {
         while(!feof(TextToEncrypt))                         // makes a loop so that while the file is still going
@@ -33,34 +38,8 @@ int main()
   return 0;
 }	
 
-char encrypt(char *wrd, int key)
+char encrypt(char *wrd, int key, char *a,*b,*c,*d,*e,*f,*g,*h,*i,*j,*k,*l,*m,*n,*o,*p,*q,*r,*s,*t,*u,*v,*w,*x,*y,*z)
 {
-    char A=65;
-    char B=66;
-    char C=67;
-    char D=68;
-    char E=69;
-    char F=70;
-    char G=71;
-    char H=72;
-    char I=73;
-    char J=74;
-    char K=75;
-    char L=76;
-    char M=77;
-    char N=78;
-    char O=79;
-    char P=80;
-    char Q=81;
-    char R=82;
-    char S=83;
-    char T=84;
-    char U=85;
-    char V=86;
-    char W=87;
-    char X=88;
-    char Y=89;
-    char Z=90;
     
     int i=0;                                            //declares i as an int
     
@@ -68,57 +47,57 @@ char encrypt(char *wrd, int key)
     {
        switch(wrd[i])
        {
-        case 65:    wrd[i]= Q;
+        case 65:    wrd[i]= a;
                     break;
-        case 66:    wrd[i]= W;
+        case 66:    wrd[i]= b;
                     break;
-        case 67:    wrd[i]= E;
+        case 67:    wrd[i]= c;
                     break;
-        case 68:    wrd[i]= R;
+        case 68:    wrd[i]= d;
                     break;
-        case 69:    wrd[i]= T;
+        case 69:    wrd[i]= e;
                     break;
-        case 70:    wrd[i]= Y;
+        case 70:    wrd[i]= f;
                     break;
-        case 71:    wrd[i]= U;
+        case 71:    wrd[i]= g;
                     break;
-        case 72:    wrd[i]= I;
+        case 72:    wrd[i]= h;
                     break;
-        case 73:    wrd[i]= O;
+        case 73:    wrd[i]= i;
                     break;
-        case 74:    wrd[i]= P;
+        case 74:    wrd[i]= j;
                     break;
-        case 75:    wrd[i]= A;
+        case 75:    wrd[i]= k;
                     break;
-        case 76:    wrd[i]= S;
+        case 76:    wrd[i]= l;
                     break;
-        case 77:    wrd[i]= D;
+        case 77:    wrd[i]= m;
                     break;
-        case 78:    wrd[i]= F;
+        case 78:    wrd[i]= n;
                     break;
-        case 79:    wrd[i]= G;
+        case 79:    wrd[i]= o;
                     break;
-        case 80:    wrd[i]= H;
+        case 80:    wrd[i]= p;
                     break;
-        case 81:    wrd[i]= J;
+        case 81:    wrd[i]= q;
                     break;
-        case 82:    wrd[i]= K;
+        case 82:    wrd[i]= r;
                     break;
-        case 83:    wrd[i]= L;
+        case 83:    wrd[i]= s;
                     break;
-        case 84:    wrd[i]= Z;
+        case 84:    wrd[i]= t;
                     break;
-        case 85:    wrd[i]= X;
+        case 85:    wrd[i]= u;
                     break;
-        case 86:    wrd[i]= C;
+        case 86:    wrd[i]= v;
                     break;
-        case 87:    wrd[i]= V;
+        case 87:    wrd[i]= w;
                     break;
-        case 88:    wrd[i]= B;
+        case 88:    wrd[i]= x;
                     break;
-        case 89:    wrd[i]= N;
+        case 89:    wrd[i]= y;
                     break;
-        case 90:    wrd[i]= M;
+        case 90:    wrd[i]= z;
                     break;
             
        default: break;
