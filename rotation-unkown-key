@@ -18,13 +18,60 @@ int main()
     while(!feof(EncryptedText))
         {
             fscanf(EncryptedText,"%s",wrd); 
-            if(wrd[0]==wrd[0] && wrd[1]==wrd[0]-12 && wrd[2]==wrd[0]-15)
+            if(wrd[0]==wrd[0] && (wrd[1]==wrd[0]-12 || wrd[1]==wrd[0]+26-12) && (wrd[2]==wrd[0]-15 || wrd[2]==wrd[0]+26-15) && wrd[3]=='\0')
             {
-                key=wrd[0]-84;
+                if(wrd[0]<84)
+                {
+                    key=wrd[0]+26-84;
+                }
+                else if(wrd[0]>84)
+                {
+                    key=wrd[0]-84;
+                }
                 printf("The key is %d\n\n",key);
                 break;
-            }     
+            }
+            else if(wrd[0]==wrd[0] && (wrd[1]==wrd[0]+13 || wrd[1]==wrd[0]+26+13) && (wrd[2]==wrd[0]+3 || wrd[2]==wrd[0]+26+3) && wrd[3]=='\0')
+            {
+                if(wrd[0]<65)
+                {
+                    key=wrd[0]+26-65;
+                }
+                else if(wrd[0]>65)
+                {
+                    key=wrd[0]-65;
+                }
+                printf("The key is %d\n\n",key);
+                break;
+            }
+            else if(wrd[0]==wrd[0] && (wrd[1]==wrd[0]+3 || wrd[1]==wrd[0]+26+3) && wrd[2]=='\0')
+            {
+                if(wrd[0]<66)
+                {
+                    key=wrd[0]+26-66;
+                }
+                else if(wrd[0]>66)
+                {
+                    key=wrd[0]-66;
+                }
+                printf("The key is %d\n\n",key);
+                break;
+            }
+            else if(wrd[0]==wrd[0] && (wrd[1]==wrd[0]-5 || wrd[1]==wrd[0]+26-5) && wrd[2]=='\0')
+            {
+                if(wrd[0]<84)
+                {
+                    key=wrd[0]+26-84;
+                }
+                else if(wrd[0]>84)
+                {
+                    key=wrd[0]-84;
+                }
+                printf("The key is %d\n\n",key);
+                break;
+            }
         }
+    
         fclose(EncryptedText);                              //closes file
         fclose(DecryptedText); 
         EncryptedText=fopen("EncryptedText.txt","r");
@@ -55,22 +102,25 @@ char decrypt(char *wrd, int key)
         if(wrd[i] == '\0')                              //if the word ends return 0
         {
             return 0;
+            goto label;
         }
-        else if(wrd[i]<65 && wrd[i]>90)
+        else if(wrd[i]<65 || wrd[i]>90)
         {
             return 0;
+            goto label;
         }
         
         wrd[i]=wrd[i]-key;                                //shifts char value up by an amount
         
         if(wrd[i]>90)
         {
-            wrd[i]=wrd[i]-25;
+            wrd[i]=wrd[i]-26;
         }
         else if(wrd[i]<65)
         {
             wrd[i]=wrd[i]+26;
         }
     }
+    label:
     return 0;
 }
