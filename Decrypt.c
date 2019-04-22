@@ -51,7 +51,7 @@ char decrypt(char *wrd, int key)
         {
             return 0;
         }
-        else if(wrd[i]<65 && wrd[i]>90)
+        else if(wrd[i]<65 || wrd[i]>90)
         {
             return 0;
         }
