@@ -58,6 +58,10 @@ char decrypt(char *wrd, int key)                         //definition to the fun
         {
             return 0;
         }
+        else if(wrd[i]>96 && wrd[i]<123)
+        {
+            wrd[i]=wrd[i]-32;
+        }
         else if(((wrd[i]<65 && wrd[i]!=39) && (wrd[i]<65 && wrd[i]!=34))  || wrd[i]>90)                 //if the value of wrd[i] is punctuation, there will be no change
         {
             return 0;
@@ -81,9 +85,7 @@ char decrypt(char *wrd, int key)                         //definition to the fun
         {
             wrd[i]=wrd[i]+26;
         }                            //if the value is below A(65) as a result of the shift then it goes to the end of the alphabet
-        {
-            wrd[i]=wrd[i]+26;
-        }
+        
     }
     return 0;
 }
