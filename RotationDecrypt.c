@@ -24,12 +24,12 @@ int main()
     {
         while(!feof(EncryptedText))                         // makes a loop so that while the file is still going it will read and decrypt the message
         {
-            
+            wrd[0]='\0';
             fscanf(EncryptedText,"%s",wrd);                 //reads a word in the file then stores it in a string on wrd
             decrypt(wrd, key);                              //calls the decrypt function to that string wrd       
             printf("%s ",wrd);                              //prints the decrypted text to the console
             fprintf(DecryptedText, "%s ",wrd);              //opens and writes the decrypted text in the file over the previous stored data
-        
+                    
         }
         printf("\n");                                       //prints new line to the console for easier veiwing 
         fprintf(DecryptedText, "\n");                       //prints new line to file
