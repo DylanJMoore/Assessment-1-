@@ -81,6 +81,7 @@ int main()
         
     while(!feof(EncryptedText))                         // makes a loop so that while the file is still going the code will still decrypt the words
     {
+        wrd[0]='\0';
         fscanf(EncryptedText,"%s",wrd);                 //reads a word in the file then stores it in a string wrd
         decrypt(wrd, key);                             //calls function to that string wrd and sends the information of the key       
         printf("%s ",wrd);                            //prints the decrypted text to the console
