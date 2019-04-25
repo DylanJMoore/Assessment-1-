@@ -21,6 +21,7 @@ int main()
     {
     while(!feof(TextToEncrypt))                         // makes a loop so it reads the file till the end then stops 
     {
+        wrd[0]='\0';
         fscanf(TextToEncrypt,"%s",wrd);                 //reads a word in the file then stores it in a string
         encrypt(wrd, key);                              //calls function to encrypt the string wrd       
         printf("%s ",wrd);                              //prints the encrypted text to the console
