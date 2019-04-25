@@ -54,22 +54,33 @@ char decrypt(char *wrd, int key)                         //definition to the fun
     int i=0;                                            //declares i as an int to act as a counter to move through the string wrd and also to finsh encoding when the string is over
     for(i = 0;i < STR_LTH;i++)                          //for the length of the string the following code will execute 
     {
-        if(wrd[i] == '\0')                              //if the word ends return 0 which will do nothing to that value at wrd[i]
+        if(wrd[i] == '\0')                              //if the word ends the code returns and goes onto the next word
         {
             return 0;
         }
-        else if(wrd[i]<65 || wrd[i]>90)                 //if the value of wrd[i] is punctuation, there will be no change
+        else if(((wrd[i]<65 && wrd[i]!=39) && (wrd[i]<65 && wrd[i]!=34))  || wrd[i]>90)                 //if the value of wrd[i] is punctuation, there will be no change
         {
             return 0;
         }
+       
+        wrd[i]=wrd[i]-key;                              //shifts char value of a letter value up by an amount changing it to a new letter
         
-        wrd[i]=wrd[i]-key;                              // this shifts the value at wrd[i] by the amount specified on the key
-        
-        if(wrd[i]>90)                                   // if the value is above Z(90) as a result of the shift then it goes back to the start of the alphabet 
+        if(wrd[i]+key==39)
+        {
+            wrd[i]=39;
+        }
+        if(wrd[i]+key==34)
+        {
+            wrd[i]=34;
+        }
+        if(wrd[i]>90)                                   //if the char value is above Z then it shifts it back to the start of the alphabet beginning with A 
         {
             wrd[i]=wrd[i]-26;
         }
-        else if(wrd[i]<65)                              //if the value is below A(65) as a result of the shift then it goes to the end of the alphabet
+        else if(wrd[i]<65 && wrd[i]!=34 && wrd[i]!=39)                              //if the char value is below A then it shifts it back to the end of the alphabet at Z
+        {
+            wrd[i]=wrd[i]+26;
+        }                            //if the value is below A(65) as a result of the shift then it goes to the end of the alphabet
         {
             wrd[i]=wrd[i]+26;
         }
