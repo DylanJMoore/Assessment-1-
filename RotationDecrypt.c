@@ -1,5 +1,6 @@
 /*This code performs a decrytpiton on a rotation cypher. It will do this granted that the key of the cypher is known.
-It requires a input of the key then the message can be read. It must be run in terminal*/
+It requires a input of the key then the message can be read. It must be run in terminal.
+Ensure that there is no spaces at the end of the read file*/
 
 #include <stdio.h>
 #include <string.h>
@@ -21,18 +22,19 @@ int main()
     scanf("%d",&key);                                   //reads the users input and stores it at key
     if(key!='\0')                                       //only continues if there is an input from the user
     {
-    while(!feof(EncryptedText))                         // makes a loop so that while the file is still going it will read and decrypt the message
-    {
-        fscanf(EncryptedText,"%s",wrd);                 //reads a word in the file then stores it in a string on wrd
-       
-        decrypt(wrd, key);                              //calls the decrypt function to that string wrd       
-        printf("%s ",wrd);                              //prints the decrypted text to the console
-        fprintf(DecryptedText, "%s ",wrd);              //opens and writes the decrypted text in the file over the previous stored data
-    }
-    printf("\n");                                       //prints new line to the console for easier veiwing 
-    fprintf(DecryptedText, "\n");                       //prints new line to file
-    fclose(EncryptedText);                              //closes file to stop an infinite loop
-    fclose(DecryptedText);                              //closes file to stop an infinite loop
+        while(!feof(EncryptedText))                         // makes a loop so that while the file is still going it will read and decrypt the message
+        {
+            
+            fscanf(EncryptedText,"%s",wrd);                 //reads a word in the file then stores it in a string on wrd
+            decrypt(wrd, key);                              //calls the decrypt function to that string wrd       
+            printf("%s ",wrd);                              //prints the decrypted text to the console
+            fprintf(DecryptedText, "%s ",wrd);              //opens and writes the decrypted text in the file over the previous stored data
+        
+        }
+        printf("\n");                                       //prints new line to the console for easier veiwing 
+        fprintf(DecryptedText, "\n");                       //prints new line to file
+        fclose(EncryptedText);                              //closes file to stop an infinite loop
+        fclose(DecryptedText);                              //closes file to stop an infinite loop
     }
     else if(key=='\0')
     {
