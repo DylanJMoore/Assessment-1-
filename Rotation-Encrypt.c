@@ -50,18 +50,22 @@ char encrypt(char *wrd, int key)                        //function receives info
         {
             return 0;
         }
+        else if(wrd[i]>96 && wrd[i]<123)
+        {
+            wrd[i]=wrd[i]-32;
+        }
         else if(((wrd[i]<65 && wrd[i]!=39) && (wrd[i]<65 && wrd[i]!=34))  || wrd[i]>90)                 //if the value of wrd[i] is punctuation, there will be no change
         {
             return 0;
         }
        
-        wrd[i]=wrd[i]-key;                              //shifts char value of a letter value up by an amount changing it to a new letter
+        wrd[i]=wrd[i]+key;                              //shifts char value of a letter value up by an amount changing it to a new letter
         
-        if(wrd[i]+key==39)
+        if(wrd[i]-key==39)
         {
             wrd[i]=39;
         }
-        if(wrd[i]+key==34)
+        if(wrd[i]-key==34)
         {
             wrd[i]=34;
         }
@@ -73,6 +77,7 @@ char encrypt(char *wrd, int key)                        //function receives info
         {
             wrd[i]=wrd[i]+26;
         }
+        
     }
     return 0;
 }
