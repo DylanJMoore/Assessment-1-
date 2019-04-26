@@ -22,74 +22,58 @@ int main()
         if(strlen(wrd)==1)
         {
             A=wrd[0];
-            
-            printf("%c  =>   A\n",wrd[0]);
         }
         if(strlen(wrd)==3 && wrd[0]==A)
         {
             N=wrd[1];
-            printf("%c  =>   N\n",wrd[1]);
             D=wrd[2];
-            printf("%c  =>   D\n",wrd[2]);
         }
         if(strlen(wrd)==3 && wrd[0]!=A)
         {
             T=wrd[0];
-            printf("%c  =>   T\n",wrd[0]);
             H=wrd[1];
-            printf("%c  =>   H\n",wrd[1]);
             E=wrd[2];
-            printf("%c  =>   E\n",wrd[2]);
         }
         if(strlen(wrd)==2 && wrd[0]==T)
         {
            O=wrd[1];
-           printf("%c  =>   O\n",wrd[1]);
         }
         if(strlen(wrd)==2 && wrd[1]==O)
         {
             F=wrd[1];
-            printf("%c  =>   F\n",wrd[1]);
         }
         if(strlen(wrd)==4 && wrd[0]==H && wrd[1]==A && wrd[3]==E)
         {
             V=wrd[2];
-            printf("%c  =>   V\n",wrd[2]);
         }
         if(strlen(wrd)==2 && wrd[0]!=A && wrd[1]==T)
         {
             I=wrd[0];
-            printf("%c  =>   I\n",wrd[0]);
         }
         if(strlen(wrd)==2 && wrd[1]==E)
         {
             B=wrd[0];
-            printf("%c  =>   B\n",wrd[0]);
         }
         if(strlen(wrd)==4 && wrd[1]==I && wrd[2]==T && wrd[3]==H)
         {
             W=wrd[0];
-            printf("%c  =>   W\n",wrd[0]);
         }
         if(strlen(wrd)==2 && wrd[0]==A)
         {
             S=wrd[1];
-            printf("%c  =>   S\n",wrd[1]);
         }
         if(strlen(wrd)==3 && wrd[1]==O)
         {
             Y=wrd[0];
-            printf("%c  =>   Y\n",wrd[0]);
             U=wrd[2];
-            printf("%c  =>   U\n",wrd[2]);
         }
         if(strlen(wrd)==3 && wrd[0]==F && wrd[1]==O)
         {
             R=wrd[2];
-            printf("%c  =>   R\n",wrd[1]);
         }
     }
-    printf("\n");
+    printf("%c  =>  A\n%c  =>  B\n%c  =>  C\n%c  =>  D\n%c  =>  E\n%c  =>  F\n%c  =>  G\n%c  =>  H\n%c  =>  I\n%c  =>  J\n%c  =>  K\n%c  =>  L\n%c  =>  M\n%c  =>  N\n%c  =>  O\n%c  =>  P\n%c  =>  Q\n%c  =>  R\n%c  =>  S\n%c  =>  T\n%c  =>  U\n%c  =>  V\n%c  =>  W\n%c  =>  X\n%c  =>  Y\n%c  =>  Z",A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z);
+    printf("\n\n");
     fclose(EncryptedText);                              //closes file
     fclose(DecryptedText); 
     EncryptedText=fopen("EncryptedText.txt","r");
