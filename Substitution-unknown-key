@@ -119,65 +119,113 @@ char decrypt(char *wrd, int key, char a,char b,char c,char d,char e,char f,char 
 
 {
     int count=0;                                            //declares i as an int
-    
+ 
     for(count = 0;count < STR_LTH;count++)                          //for thr length of the string 
     {
-       switch(count)
-       {
-        case 65:    wrd[count]= a;
-                    break;
-        case 66:    wrd[count]= b;
-                    break;
-        case 67:    wrd[count]= c;
-                    break;
-        case 68:    wrd[count]= d;
-                    break;
-        case 69:    wrd[count]= e;
-                    break;
-        case 70:    wrd[count]= f;
-                    break;
-        case 71:    wrd[count]= g;
-                    break;
-        case 72:    wrd[count]= h;
-                    break;
-        case 73:    wrd[count]= i;
-                    break;
-        case 74:    wrd[count]= j;
-                    break;
-        case 75:    wrd[count]= k;
-                    break;
-        case 76:    wrd[count]= l;
-                    break;
-        case 77:    wrd[count]= m;
-                    break;
-        case 78:    wrd[count]= n;
-                    break;
-        case 79:    wrd[count]= o;
-                    break;
-        case 80:    wrd[count]= p;
-                    break;
-        case 81:    wrd[count]= q;
-                    break;
-        case 82:    wrd[count]= r;
-                    break;
-        case 83:    wrd[count]= s;
-                    break;
-        case 84:    wrd[count]= t;
-                    break;
-        case 85:    wrd[count]= u;
-                    break;
-        case 86:    wrd[count]= v;
-                    break;
-        case 87:    wrd[count]= w;
-                    break;
-        case 88:    wrd[count]= x;
-                    break;
-        case 89:    wrd[count]= y;
-                    break;
-        case 90:    wrd[count]= z;
-                    break;
-            
-       default: break;
+        
+       if(wrd[count]==A)
+        {
+            wrd[count]=65;
+        }
+        if(wrd[count]==B)
+        {
+            wrd[count]=b;
+        }
+        if(wrd[count]==C)
+        {
+            wrd[count]=c;
+        }
+        if(wrd[count]==D)
+        {
+            wrd[count]=d;
+        }
+        if(wrd[count]==E)
+        {
+            wrd[count]=e;
+        }
+        if(wrd[count]==F)
+        {
+            wrd[count]=f;
+        }
+        if(wrd[count]==G)
+        {
+            wrd[count]=g;
+        }
+        if(wrd[count]==H)
+        {
+            wrd[count]=h;
+        }
+        if(wrd[count]==I)
+        {
+            wrd[count]=i;
+        }
+        if(wrd[count]==J)
+        {
+            wrd[count]=j;
+        }
+        if(wrd[count]==K)
+        {
+            wrd[count]=k;
+        }
+        if(wrd[count]==L)
+        {
+            wrd[count]=l;
+        }
+        if(wrd[count]==M)
+        {
+            wrd[count]=m;
+        }
+        if(wrd[count]==N)
+        {
+            wrd[count]=n;
+        }
+        if(wrd[count]==O)
+        {
+            wrd[count]=o;
+        }
+        if(wrd[count]==P)
+        {
+            wrd[count]=p;
+        }
+        if(wrd[count]==Q)
+        {
+            wrd[count]=q;
+        }
+        if(wrd[count]==R)
+        {
+            wrd[count]=r;
+        }
+        if(wrd[count]==S)
+        {
+            wrd[count]=s;
+        }
+        if(wrd[count]==T)
+        {
+            wrd[count]=t;
+        }
+        if(wrd[count]==U)
+        {
+            wrd[count]=u;
+        }
+        if(wrd[count]==V)
+        {
+            wrd[count]=v;
+        }
+        if(wrd[count]==W)
+        {
+            wrd[count]=w;
+        }
+        if(wrd[count]==X)
+        {
+            wrd[count]=x;
+        }
+        if(wrd[count]==Y)
+        {
+            wrd[count]=y;
+        }
+        if(wrd[count]==Z)
+        {
+            wrd[count]=z;
         }
 
     }
