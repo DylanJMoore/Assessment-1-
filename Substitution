@@ -1,121 +1,117 @@
+// this code enbles you to encrypt and decrypt files with substitution encryption. it must be ran through terminal
+
 #include <stdio.h>
 #include <string.h>
 
 #define STR_LTH 26
 
-char encrypt(char *wrd, int key, char *a,*b,*c,*d,*e,*f,*g,*h,*i,*j,*k,*l,*m,*n,*o,*p,*q,*r,*s,*t,*u,*v,*w,*x,*y,*z); 
+char Cypher(char *wrd, char a,char b,char c,char d,char e,char f,char g,char h,char i,char j,char k,char l,char m,char n,char o,char p,char q,char r,char s,char t,char u,char v,char w,char x,char y,char z);                       //function prototype for the encryption/decryption
 
 int main() 
 {
-    int key=0, answer=0;
-    char a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
-    FILE *TextToEncrypt;                                //sets a pointer to the file TextToEncrypt
-    TextToEncrypt=fopen("TextToEncrypt.txt","r");       //opens and reads the file
-    FILE *EncryptedText;
-    EncryptedText=fopen("EncryptedText.txt","w");
-    char wrd[STR_LTH];
+    int answer=0;                                               //sets up variable for user input
+    char a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;   //declares each letter to allow the program to assign the substitution letters to
+    FILE *Input;                                                //sets a pointer to the file named input so it can read the message 
+    Input=fopen("Input.txt","r");                               //opens and sets up the file to read the contents 
+    FILE *Output;                                               //sets a pointer to the file named output so it can convert the message 
+    Output=fopen("Output.txt","w");                             //opens the file to write the results to it
+    char wrd[STR_LTH];                                          //declares a string to store each word on to then get read
    
-    printf("Would you like to\n(1)Encrypt\nOr\n(2)Decrypt")
-    scanf("%d",&answer);
-    if (answer==1)
+    printf("Would you like to\n(1)Encrypt\nOr\n(2)Decrypt\n\n");      //prompts the user to make a decsicion to encrypt their input or decrypt it
+    scanf("%d",&answer);                                               // reads the users answer 
+    if (answer==1)                                                      //if they choose to encrypt by typing 1 the following message will appear and ask for an input 
     {
     printf("Enter a letter that the letter above will be subsitituted for\nA B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n| | | | | | | | | | | | | | | | | | | | | | | | | |\nV V V V V V V V V V V V V V V V V V V V V V V V V V\n");
     scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a,&b,&c,&d,&e,&f,&g,&h,&i,&j,&k,&l,&m,&n,&o,&p,&q,&r,&s,&t,&u,&v,&w,&x,&y,&z);
 
     }
-    else if(answer==2)
+    else if(answer==2)                                                  //if they want to decrypt by pressing 2, this will come up asking about for the key of the substitution
     {
-    printf("Enter the letter that the letter above has been subsitituted for\nA B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^\n| | | | | | | | | | | | | | | | | | | | | | | | | |\n");
+    printf("Enter the letter that the letter above has been subsitituted for\nA B C D E F G H I J K L M N O P Q R S T U V W X Y Z\n^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^\n| | | | | | | | | | | | | | | | | | | | | | | | | |\n");
     scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a,&b,&c,&d,&e,&f,&g,&h,&i,&j,&k,&l,&m,&n,&o,&p,&q,&r,&s,&t,&u,&v,&w,&x,&y,&z);
     }
-    else if(answer!=1 || answer!=2)
+    else if(answer!=1 || answer!=2)                                     //if the user doesnt enter anything or the answer is not a one or a two it will help them by suggesting to enter a new number 
     {
-        printf("Enter a one or a two");      
+        printf("Enter a one or a two\n(1) for Encrypting\n(2) for Decrypting");      
     }
       
-    if(key==0)
+   
+    while(!feof(Input))                         // makes a loop so that it reads a word then acts on it then goes to the next word, this continues until the file ends  
     {
-        while(!feof(TextToEncrypt))                         // makes a loop so that while the file is still going
-        {
-            fscanf(TextToEncrypt,"%s",wrd);                 //reads a word in the file then stores it in a string
-            encrypt(wrd, key);                             //calls function to that string       
-            printf("%s ",wrd);                              //prints the encrypted text to the console
-            fprintf(EncryptedText, "%s ",wrd);              //prints encrypted text to the file EncryptedText
-        }
-        fclose(TextToEncrypt);                              //closes file
-        fclose(EncryptedText);   
+        fscanf(Input,"%s",wrd);                                                                             //reads a word in the file then stores it into the strin wrd
+        Cypher(wrd,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);                               //calls function on the string      
+        printf("%s ",wrd);                                                                                  //prints the output text to the console
+        fprintf(Output, "%s ",wrd);                                                                         //prints text to the Output.txt
     }
-    else
-    {
-        printf("Try again using a non-zero number\n");
-    }
+    fclose(Input);                              //closes both files to stop an to allow the program to end
+    fclose(Output);   
 
-  return 0;
+  return 0;                                     //closes program
 }	
 
-char encrypt(char *wrd, int key, char *a,*b,*c,*d,*e,*f,*g,*h,*i,*j,*k,*l,*m,*n,*o,*p,*q,*r,*s,*t,*u,*v,*w,*x,*y,*z)
+char Cypher(char *wrd, char a,char b,char c,char d,char e,char f,char g,char h,char i,char j,char k,char l,char m,char n,char o,char p,char q,char r,char s,char t,char u,char v,char w,char x,char y,char z)  
 {
     
-    int i=0;                                            //declares i as an int
+    int count=0;                                            //declares count as an int to be able to navigate through the string and also count how long the string is
     
-    for(i = 0;i < STR_LTH;i++)                          //for thr length of the string 
+    for(count = 0;count < STR_LTH;count++)                  //for the length of the string the following code will be executed
     {
-       switch(wrd[i])
+       switch(wrd[count])                                   //creates a switch that checks the first letter then goes to the case where it is equal to that letter then changes it to the new value of it given by the user 
        {
-        case 65:    wrd[i]= a;
+        case 65:    wrd[count]= a;
                     break;
-        case 66:    wrd[i]= b;
+        case 66:    wrd[count]= b;
                     break;
-        case 67:    wrd[i]= c;
+        case 67:    wrd[count]= c;
                     break;
-        case 68:    wrd[i]= d;
+        case 68:    wrd[count]= d;
                     break;
-        case 69:    wrd[i]= e;
+        case 69:    wrd[count]= e;
                     break;
-        case 70:    wrd[i]= f;
+        case 70:    wrd[count]= f;
                     break;
-        case 71:    wrd[i]= g;
+        case 71:    wrd[count]= g;
                     break;
-        case 72:    wrd[i]= h;
+        case 72:    wrd[count]= h;
                     break;
-        case 73:    wrd[i]= i;
+        case 73:    wrd[count]= i;
                     break;
-        case 74:    wrd[i]= j;
+        case 74:    wrd[count]= j;
                     break;
-        case 75:    wrd[i]= k;
+        case 75:    wrd[count]= k;
                     break;
-        case 76:    wrd[i]= l;
+        case 76:    wrd[count]= l;
                     break;
-        case 77:    wrd[i]= m;
+        case 77:    wrd[count]= m;
                     break;
-        case 78:    wrd[i]= n;
+        case 78:    wrd[count]= n;
                     break;
-        case 79:    wrd[i]= o;
+        case 79:    wrd[count]= o;
                     break;
-        case 80:    wrd[i]= p;
+        case 80:    wrd[count]= p;
                     break;
-        case 81:    wrd[i]= q;
+        case 81:    wrd[count]= q;
                     break;
-        case 82:    wrd[i]= r;
+        case 82:    wrd[count]= r;
                     break;
-        case 83:    wrd[i]= s;
+        case 83:    wrd[count]= s;
                     break;
-        case 84:    wrd[i]= t;
+        case 84:    wrd[count]= t;
                     break;
-        case 85:    wrd[i]= u;
+        case 85:    wrd[count]= u;
                     break;
-        case 86:    wrd[i]= v;
+        case 86:    wrd[count]= v;
                     break;
-        case 87:    wrd[i]= w;
+        case 87:    wrd[count]= w;
                     break;
-        case 88:    wrd[i]= x;
+        case 88:    wrd[count]= x;
                     break;
-        case 89:    wrd[i]= y;
+        case 89:    wrd[count]= y;
                     break;
-        case 90:    wrd[i]= z;
+        case 90:    wrd[count]= z;
                     break;
             
-       default: break;
+       default: break;                              //if the charater read is punctuation it is not changed
         }
 
     }
