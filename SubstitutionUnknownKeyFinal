@@ -1,0 +1,326 @@
+//This code takes text from the encrypted text file and decrypts it partialy and shows the key. The key shows what each the letter decrypts to and the message can be read below it. it can be run from console or terminal
+
+#include <stdio.h>
+#include <string.h>
+
+#define STR_LTH 26
+
+
+char decrypt(char *wrd, char A,char B,char C,char D,char E,char F,char G,char H,char I,char J,char K,char L,char M,char N,char O,char P,char Q,char R,char S,char T,char U,char V,char W,char X,char Y,char Z);    //function prototype for decrypting the message sends the wrd and the value that each letter represents 
+
+int main() 
+{
+    char A=65,B=66,C=67,D=68,E=69,F=70,G=71,H=72,I=73,J=74,K=75,L=76,M=77,N=78,O=79,P=80,Q=81,R=82,S=83,T=84,U=85,V=86,W=87,X=88,Y=89,Z=90;         //introductes the alphabete as char
+    FILE *EncryptedText;                                                                //sets a pointer to the file TextToEncrypt
+    EncryptedText=fopen("EncryptedText.txt","r");                                       //opens the file and sets the code to read from the file
+    FILE *DecryptedText;                                                                //sets pointer to file
+    DecryptedText=fopen("DecryptedText.txt","w");                                       //opens the file and sets to program to write the out put message to that file
+    char wrd[STR_LTH];                                                                  //declares wrd as a char with length of 26
+          
+    while(!feof(EncryptedText))                                                         //runs the following program until the file ends
+    {
+        fscanf(EncryptedText,"%s",wrd);                                                 //scans the EncryptedText file for a word then stores it as a string
+        if(wrd[0]>65 && wrd[0]<90)                                                      //the following if statements identifies words by testing their length then some letters already found. the words which correlates to the code is written next to the statement
+        {
+             if(strlen(wrd)==3 && wrd[0]==wrd[2])                                       //DID
+            {
+                D=wrd[0];                                                               //if a letter is missing from the alphabet it stores the substituted letter for what it was changed for
+                I=wrd[1];
+            }
+            if(strlen(wrd)==1 && wrd[0]!=I)                                             //A
+            {
+                A=wrd[0];
+            }
+            if(strlen(wrd)==1 && wrd[0]!=A)                                             //I
+            {
+                I=wrd[0];
+            }
+            if(strlen(wrd)==3 && wrd[0]==A)                                             //AND
+            {
+                N=wrd[1];
+                D=wrd[2];
+            }
+            if(strlen(wrd)==3 && wrd[1]==A && wrd[2]==N)                                //CAN
+            {
+                C=wrd[0];
+            }
+            if(strlen(wrd)==4 && wrd[2]==A && wrd[0]==wrd[3])                           //THAT
+            {
+                T=wrd[0];
+                H=wrd[1];
+            }
+            if(strlen(wrd)==3 && wrd[0]!=A && wrd[0]==T && wrd[1]==H)                   //THE
+            {
+                T=wrd[0];
+                H=wrd[1];
+                E=wrd[2];
+            }
+            if(strlen(wrd)==3 && wrd[0]==A && wrd[2]==E && wrd[1]!=T)                   //ARE
+            {
+                R=wrd[1];
+            }
+            if(strlen(wrd)==4 && wrd[1]==I && wrd[2]==T && wrd[3]==H)                   //SITH
+            {
+                S=wrd[0];
+            }
+            if(strlen(wrd)==2 && wrd[0]==T)                                             //TO
+            {
+                O=wrd[1];
+            }
+            if(strlen(wrd)==2 && wrd[0]==O)                                             //OF
+            {
+                F=wrd[1];
+            }
+            if(strlen(wrd)==4 && wrd[0]==H && wrd[1]==A && wrd[3]==E)                   //HAVE
+            {
+                V=wrd[2];
+            }
+            if(strlen(wrd)==2 && wrd[0]!=A && wrd[1]==T)                                //IT
+            {
+                I=wrd[0];
+            }
+            if(strlen(wrd)==2 && wrd[1]==E && wrd[0]!=H)                                //BE
+            {
+                B=wrd[0];
+            }
+            if(strlen(wrd)==4 && wrd[1]==I && wrd[2]==T && wrd[3]==H)                   //WITH
+            {
+                W=wrd[0];
+            }
+            if(strlen(wrd)==2 && wrd[0]==A && wrd[1]!=T && wrd[1]!=N)                    //AS
+            {
+                S=wrd[1];
+            }
+            if(strlen(wrd)==2 && wrd[0]==A && wrd[1]!=T && wrd[1]!=S)                    //AN
+            {
+                N=wrd[1];
+            }
+            if(strlen(wrd)==3 && wrd[0]!=Y && wrd[0]!=T && wrd[2]==T && wrd [1]==O)      //NOT
+            {
+                N=wrd[0];
+            }
+            if(strlen(wrd)==3 && wrd[1]==O && wrd[0]!=T && wrd[0]!=F && wrd[2]!=F && wrd[0]!=N)      //YOU
+            {
+                Y=wrd[0];
+                U=wrd[2];
+            }
+            if(strlen(wrd)==3 && wrd[0]==F && wrd[1]==O)                                //FOR
+            {
+                R=wrd[2];
+            }
+            if(strlen(wrd)==4 && wrd[0]==I && wrd[2]==39)                               //IT'S
+            {
+                S=wrd[3];
+            }
+            if(strlen(wrd)==7 && wrd[0]==wrd[6] && wrd[1]==wrd[5])                      //THOUGHT
+            {
+                H=wrd[1];
+                O=wrd[2];
+                U=wrd[3];
+                G=wrd[4];
+                
+            }
+            if(strlen(wrd)==5 && wrd[0]==D && wrd[1]==A && wrd[3]==T && wrd[4]==H)      //DARTH
+            {
+                R=wrd[3];
+            }
+            if(strlen(wrd)==5 && wrd[0]==S && wrd[3]!=H)                                //STORY
+            {
+                R=wrd[3];
+                Y=wrd[4];
+            }
+            if(strlen(wrd)==4 && wrd[2]==wrd[3])                                        //TELL SELL BELL
+            {
+                L=wrd[2];
+                
+            }
+            if(strlen(wrd)==2 && wrd[0]==H)                                             //HE
+            {
+                E=wrd[1];
+                
+            }
+            if(strlen(wrd)==4 && wrd[0]==wrd[2])                                        //JEDI
+            {
+                J=wrd[0];
+                E=wrd[1];
+                
+            }
+            if(strlen(wrd)==4 && wrd[2]==S )                                            //WISE
+            {
+                W=wrd[0];
+            }
+            if(strlen(wrd)==4 && wrd[1]==N  && wrd[2]==O && wrd[3]==W)                  //KNOW
+            {
+                K=wrd[0];
+            }
+            if(strlen(wrd)==4 && wrd[0]==W  && wrd[1]==O && wrd[2]==R)                  //WORK
+            {
+                K=wrd[3];
+            }
+            if(strlen(wrd)==4 && wrd[0]==D && wrd[2]==R)                                //DARK
+            {
+                K=wrd[3];
+            }
+
+           if(strlen(wrd)==6 && wrd[2]==wrd[5] )                                        //CREATE
+           {
+               C=wrd[0];
+               
+           }
+           if(strlen(wrd)==4 && wrd[0]==F)                                              //FROM
+           {
+               M=wrd[3];
+           }
+           if(strlen(wrd)==8 && wrd[4]==R && wrd[5]==F && wrd[6]==U && wrd[7]==L)       //POWERFUL
+           {
+               P=wrd[0];
+               O=wrd[1];
+               W=wrd[2];
+               E=wrd[3];
+           }
+        }      
+
+    }
+    printf("KEY\n\n%c  =>  A\n%c  =>  B\n%c  =>  C\n%c  =>  D\n%c  =>  E\n%c  =>  F\n%c  =>  G\n%c  =>  H\n%c  =>  I\n%c  =>  J\n%c  =>  K\n%c  =>  L\n%c  =>  M\n%c  =>  N\n%c  =>  O\n%c  =>  P\n%c  =>  Q\n%c  =>  R\n%c  =>  S\n%c  =>  T\n%c  =>  U\n%c  =>  V\n%c  =>  W\n%c  =>  X\n%c  =>  Y\n%c  =>  Z",A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z);                      //prints the Letter that has replaced the original letter. shown by having the changed letter then an arrow to the letter it actually is  
+    printf("\n\nDECRYPTED TEXT\n\n");                                                                                                                                                                                                                                                                                                                                                       //prints the decrypted text indicating that the follwing text is the decrypted message
+    fclose(EncryptedText);                              //closes file to stop an infintie program
+    fclose(DecryptedText);                              //closes the next file
+    EncryptedText=fopen("EncryptedText.txt","r");       //reopens the files to begin from the start again
+    DecryptedText=fopen("DecryptedText.txt","w");       //
+    while(!feof(EncryptedText))                         // makes a loop so that while the file is still going it will execute the code
+        {
+            
+            wrd[0]='\0';                                                                            //sets wrd as null to avoid reprinting at the end of the file 
+            fscanf(EncryptedText,"%s",wrd);                                                         //reads a word in the file Encryptedtext then stores it in a string on wrd
+            decrypt(wrd, A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z);                      //calls function to that string wrd and also sends the new values for each alphabet       
+            printf("%s ",wrd);                                                                      //prints the decrypted text to the console
+            fprintf(DecryptedText, "%s ",wrd);                                                      //prints encrypted text to the file EncryptedText
+        }
+    printf("\n");                                       //prints a new line to avoid crowding
+    fclose(EncryptedText);                              //closes both files to end program
+    fclose(DecryptedText);                              //
+    
+  
+  return 0;                                             //ends code
+}	
+
+char decrypt(char *wrd,char A,char B,char C,char D,char E,char F,char G,char H,char I,char J,char K,char L,char M,char N,char O,char P,char Q,char R,char S,char T,char U,char V,char W,char X,char Y,char Z)
+
+{
+    int count=0;                                                                                                                                    //declares count as an int used to navigate string and also the length
+    char a=97,b=66,c=99,d=68,e=101,f=102,g=71,h=72,i=105,j=74,k=107,l=76,m=77,n=78,o=79,p=112,q=81,r=82,s=83,t=84,u=85,v=86,w=87,x=88,y=121,z=90;   //declares the alphabet using lowercase variables and makes them the ascii values. some are the lowercase value to avoid jumbing of the letters
+    for(count = 0;count < STR_LTH;count++)                                                                                                           //for the length of the string the each letter is ran through the code
+    {
+        
+       if(wrd[count]==A)                                                                                                                            //each letter is tested. if it is equal to a letter that has been determined to by the dictionary above it will be correlated to the acutal ascii value of that letter 
+        {
+            wrd[count]=a;
+        }
+        if(wrd[count]==B)
+        {
+            wrd[count]=b;
+        }
+        if(wrd[count]==C)
+        {
+            wrd[count]=c;
+        }
+        if(wrd[count]==D)
+        {
+            wrd[count]=d;
+        }
+        if(wrd[count]==E)
+        {
+            wrd[count]=e;
+        }
+        if(wrd[count]==F)
+        {
+            wrd[count]=f;
+        }
+        if(wrd[count]==G)
+        {
+            wrd[count]=g;
+        }
+        if(wrd[count]==H)
+        {
+            wrd[count]=h;
+        }
+        if(wrd[count]==I)
+        {
+            wrd[count]=i;
+        }
+        if(wrd[count]==J)
+        {
+            wrd[count]=j;
+        }
+        if(wrd[count]==K)
+        {
+            wrd[count]=k;
+        }
+        if(wrd[count]==L)
+        {
+            wrd[count]=l;
+        }
+        if(wrd[count]==M)
+        {
+            wrd[count]=m;
+        }
+        if(wrd[count]==N)
+        {
+            wrd[count]=n;
+        }
+        if(wrd[count]==O)
+        {
+            wrd[count]=o;
+        }
+        if(wrd[count]==P)
+        {
+            wrd[count]=p;
+        }
+        if(wrd[count]==Q)
+        {
+            wrd[count]=q;
+        }
+        if(wrd[count]==R)
+        {
+            wrd[count]=r;
+        }
+        if(wrd[count]==S)
+        {
+            wrd[count]=s;
+        }
+        if(wrd[count]==T)
+        {
+            wrd[count]=t;
+        }
+        if(wrd[count]==U)
+        {
+            wrd[count]=u;
+        }
+        if(wrd[count]==V)
+        {
+            wrd[count]=v;
+        }
+        if(wrd[count]==W)
+        {
+            wrd[count]=w;
+        }
+        if(wrd[count]==X)
+        {
+            wrd[count]=x;
+        }
+        if(wrd[count]==Y)
+        {
+            wrd[count]=y;
+        }
+        if(wrd[count]==Z)
+        {
+            wrd[count]=z;
+        }
+        else if(wrd[count]<65 && wrd[count]>90)                                                                                                         //if it is not a letter it is left alone
+        {
+            wrd[count]=wrd[count];
+        }
+
+    }
+    return 0;
+}
